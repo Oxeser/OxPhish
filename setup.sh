@@ -6,36 +6,47 @@ echo "====================================="
 echo "    OxPhish Setup Script"
 echo "====================================="
 
-if [ "$(id -u)" -ne 0 ]; then
-  echo "[!] This script must be run as root or with sudo."
-  exit 1
+if [ -f /data/data/com.termux/files/usr/bin/bash ]; then
+  TERMUX=true
+else
+  TERMUX=false
+fi
+
+if [ "$TERMUX" = true ]; then
+  PACKAGE_MANAGER="pkg"
+  PYTHON="python"
+  PIP="pip"
+else
+  PACKAGE_MANAGER="apt"
+  PYTHON="python3"
+  PIP="pip3"
 fi
 
 echo "[+] Updating package list..."
-apt update -y
+$PACKAGE_MANAGER update -y
 
 echo "[+] Checking for Python and pip..."
-if ! command -v python &> /dev/null; then
+if ! command -v $PYTHON &> /dev/null; then
   echo "[+] Python not found, installing..."
-  apt install python -y
+  $PACKAGE_MANAGER install python -y
 else
   echo "[+] Python is already installed."
 fi
 
-if ! command -v pip &> /dev/null; then
+if ! command -v $PIP &> /dev/null; then
   echo "[+] pip not found, installing..."
-  apt install python-pip -y
+  $PACKAGE_MANAGER install python-pip -y
 else
   echo "[+] pip is already installed."
 fi
 
 echo "[+] Installing required Python packages..."
-pip install -r requirements.txt
+$PIP install --user -r requirements.txt
 
 echo "[+] Checking for Git..."
 if ! command -v git &> /dev/null; then
   echo "[+] Git not found, installing..."
-  apt install git -y
+  $PACKAGE_MANAGER install git -y
 else
   echo "[+] Git is already installed."
 fi
@@ -51,7 +62,7 @@ chmod +x setup.sh
 
 echo "[+] Running OxPhish..."
 cd OxPhish
-python main.py
+$PYTHON main.py
 
 echo "[+] Setup completed!"
 echo "[+] If you want to update, run the script again or use: git pull"
