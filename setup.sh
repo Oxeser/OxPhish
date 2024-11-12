@@ -49,6 +49,9 @@ fi
 
 chmod +x setup.sh
 
+echo "[+] Running OxPhish..."
+cd OxPhish
+python main.py
+
 echo "[+] Setup completed!"
-echo "[+] To run the tool, use: python main.py"
 echo "[+] If you want to update, run the script again or use: git pull"
