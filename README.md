@@ -9,5 +9,5 @@ English: This project was developed by Oxeser for educational purposes and for p
 
 Türkçe: Bu proje Oxeser tarafından eğitim amaçlı ve kişilerin siber güvenlik alanında bilgi sahibi olması amacıyla geliştirilmiştir. Aracın kötüye kullanılması benim sorumluluğumda değildir.
 
-# Usage
+## Usage
 Bash git clone https://github.com/Oxeser/OxPhish.git
