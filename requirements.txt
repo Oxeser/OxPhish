@@ -1,1 +1,6 @@
-
+Flask
+requests
+pyfiglet
+termcolor
+subprocess32
+tqdm
