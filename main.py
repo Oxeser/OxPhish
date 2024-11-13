@@ -116,6 +116,7 @@ def display_main_menu():
 def main_menu():
     clear_screen()
     check_for_updates()
+    time.sleep(2)
     clear_screen()
     display_logo()
     while True:
