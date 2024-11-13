@@ -51,11 +51,12 @@ else
   echo "[+] Git is already installed."
 fi
 
-if [ ! -d "OxPhish" ]; then
-  echo "[+] Cloning the OxPhish repository..."
-  git clone https://github.com/Oxeser/OxPhish.git
+echo "[+] Checking for OpenSSH..."
+if ! command -v ssh &> /dev/null; then
+  echo "[+] OpenSSH not found, installing..."
+  $PACKAGE_MANAGER install openssh -y
 else
-  echo "[+] OxPhish repository already exists."
+  echo "[+] OpenSSH is already installed."
 fi
 
 chmod +x setup.sh
