@@ -1,1 +1,290 @@
-
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #fafafa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            max-width: 350px;
+            margin: 32px auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+        
+        .login-box {
+            background-color: #fff;
+            border: 1px solid #dbdbdb;
+            border-radius: 1px;
+            margin: 0 0 10px;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .logo {
+            margin: 22px auto 12px;
+            max-width: 175px;
+        }
+        
+        .login-form {
+            margin-top: 24px;
+            width: 80%;
+        }
+        
+        .input-box {
+            position: relative;
+            margin-bottom: 6px;
+        }
+        
+        .input-field {
+            background: #fafafa;
+            border: 1px solid #dbdbdb;
+            border-radius: 3px;
+            font-size: 12px;
+            height: 36px;
+            padding: 9px 8px;
+            width: 100%;
+        }
+        
+        .input-field:focus {
+            border-color: #a8a8a8;
+            outline: none;
+        }
+        
+        .login-button {
+            background-color: #0095f6;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-weight: 600;
+            padding: 5px 9px;
+            width: 100%;
+            height: 30px;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+        
+        .login-button:hover {
+            background-color: #0086e8;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 10px 0 18px;
+            width: 80%;
+        }
+        
+        .divider-line {
+            background-color: #dbdbdb;
+            height: 1px;
+            flex-grow: 1;
+        }
+        
+        .divider-text {
+            color: #8e8e8e;
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 15px;
+            margin: 0 18px;
+            text-transform: uppercase;
+        }
+        
+        .facebook-login {
+            color: #385185;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .facebook-login img {
+            margin-right: 8px;
+            width: 16px;
+            height: 16px;
+        }
+        
+        .forgot-password {
+            color: #00376b;
+            font-size: 12px;
+            line-height: 14px;
+            margin-top: 12px;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .signup-box {
+            background-color: #fff;
+            border: 1px solid #dbdbdb;
+            border-radius: 1px;
+            margin: 0 0 10px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .signup-text {
+            color: #262626;
+            font-size: 14px;
+        }
+        
+        .signup-link {
+            color: #0095f6;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .app-download {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+        
+        .app-text {
+            color: #262626;
+            font-size: 14px;
+            margin: 10px 20px;
+            text-align: center;
+        }
+        
+        .app-store-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+        .app-store-link {
+            margin: 0 4px;
+        }
+        
+        .app-store-img {
+            height: 40px;
+        }
+        
+        .footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 52px;
+            max-width: 350px;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+        
+        .footer-link {
+            color: #8e8e8e;
+            font-size: 12px;
+            margin: 0 8px 12px 8px;
+            text-decoration: none;
+        }
+        
+        .copyright {
+            color: #8e8e8e;
+            font-size: 12px;
+            margin: 12px 0;
+        }
+        
+        @media (max-width: 450px) {
+            .container {
+                margin-top: 0;
+            }
+            
+            .login-box {
+                background-color: transparent;
+                border: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <img src="https://www.instagram.com/static/images/web/logged_out_wordmark.png/7a252de00b20.png" alt="Instagram" class="logo">
+            
+            <form action="/login" method="POST" class="login-form">
+                <div class="input-box">
+                    <input type="text" name="username" class="input-field" placeholder="Telefon numarası, kullanıcı adı veya e-posta" required>
+                </div>
+                <div class="input-box">
+                    <input type="password" name="password" class="input-field" placeholder="Şifre" required>
+                </div>
+                <button type="submit" class="login-button">Giriş Yap</button>
+            </form>
+            
+            <div class="divider">
+                <div class="divider-line"></div>
+                <div class="divider-text">ya da</div>
+                <div class="divider-line"></div>
+            </div>
+            
+            <a href="#" class="facebook-login">
+                <img src="https://static.xx.fbcdn.net/rsrc.php/v3/y5/r/pDu-Oqpk-mI.png" alt="Facebook">
+                Facebook ile Giriş Yap
+            </a>
+            
+            <a href="#" class="forgot-password">Şifreni mi unuttun?</a>
+        </div>
+        
+        <div class="signup-box">
+            <p class="signup-text">
+                Hesabın yok mu? <a href="#" class="signup-link">Kaydol</a>
+            </p>
+        </div>
+        
+        <div class="app-download">
+            <p class="app-text">Uygulamayı indir.</p>
+            <div class="app-store-links">
+                <a href="#" class="app-store-link">
+                    <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_turkish-tr.png/30b29fd697b2.png" alt="App Store'dan İndir" class="app-store-img">
+                </a>
+                <a href="#" class="app-store-link">
+                    <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_turkish-tr.png/9d46177cf153.png" alt="Google Play'den İndir" class="app-store-img">
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="footer-links">
+            <a href="#" class="footer-link">Hakkında</a>
+            <a href="#" class="footer-link">Blog</a>
+            <a href="#" class="footer-link">İş Fırsatları</a>
+            <a href="#" class="footer-link">Yardım</a>
+            <a href="#" class="footer-link">API</a>
+            <a href="#" class="footer-link">Gizlilik</a>
+            <a href="#" class="footer-link">Koşullar</a>
+            <a href="#" class="footer-link">Konumlar</a>
+            <a href="#" class="footer-link">Dil</a>
+            <a href="#" class="footer-link">Meta Verified</a>
+        </div>
+        <p class="copyright">© 2023 Instagram from Meta</p>
+    </div>
+</body>
+</html>
