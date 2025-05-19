@@ -39,7 +39,7 @@ def print_banner():
 {Colors.CYAN}╔══════════════════════════════════════════════════════════════════╗
 ║ {Colors.YELLOW}Tool        {Colors.WHITE}: OxPhish - Advanced Phishing Tool                 ║
 ║ {Colors.YELLOW}Version     {Colors.WHITE}: 2.1.0                                           ║
-║ {Colors.YELLOW}GitHub      {Colors.WHITE}: https://github.com/OxPhish/OxPhish              ║
+║ {Colors.YELLOW}GitHub      {Colors.WHITE}: https://github.com/Oxeser/OxPhish              ║
 {Colors.CYAN}╚══════════════════════════════════════════════════════════════════╝{Colors.END}
 """
     print(banner)
